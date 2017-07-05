@@ -1,0 +1,19 @@
+FROM devops.nxp.com/ai
+
+WORKDIR /root
+
+COPY qemu-aarch64-static /usr/bin/
+
+RUN echo "nameserver 10.192.130.201" >> /etc/resolv.conf && cat /etc/resolv.conf \
+    && apt-get update && apt-get install python-pip -y
+
+COPY /dcca-demo/webapp/ /root/dcca/webapp/
+
+RUN echo "nameserver 10.192.130.201" >> /etc/resolv.conf && \
+    ls /root/dcca/webapp && \
+    cd /root/dcca/webapp && pip install -r requirements.txt && \
+    cd /root/dcca && ln -sf /root/dcca/webapp/images images
+
+WORKDIR /root/dcca/webapp
+
+CMD ["python", "dcca.py"]
