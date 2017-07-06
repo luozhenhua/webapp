@@ -1,0 +1,5 @@
+FROM devops.nxp.com/ai
+
+ 
+ENTRYPOINT ["/bin/bash","-c","python ~/sxl/models/tutorials/image/imagenet/classify_image.py --image_file ~/sxl/pic/cat.jpg"]
+
