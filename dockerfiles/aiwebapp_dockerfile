@@ -1,4 +1,4 @@
-FROM ec2-34-212-204-207.us-west-2.compute.amazonaws.com/ai
+FROM 602370387070.dkr.ecr.us-west-2.amazonaws.com/ai
 
 WORKDIR /root
 
