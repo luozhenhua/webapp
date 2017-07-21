@@ -1,0 +1,106 @@
+.content {
+
+}
+.upload-screen {
+    background-color: #FDFDFD;
+    border: 2px dashed #ACACAC;
+}
+
+.upload-screen {
+    background-color: #FDFDFD;
+    border: 2px dashed #ACACAC;
+}
+.upload-screen .upload-wrapper {
+    position: relative;
+    padding-bottom: 30px;
+}
+.row .row {
+    margin: 0 -.71429rem;
+    max-width: none;
+    width: auto;
+}
+.text-center {
+    text-align: center!important;
+}
+.top-label h3 {
+    color: #6F6D6C;
+    margin: 20px 0;
+    font-weight: 400;
+    font-size: 1.9em;
+}
+.hide {
+    display: none!important;
+}
+
+.upload-screen .upload-background {
+    background-image: url(../img/upload-background-sprite.png/);
+    height: 130px;
+    background-repeat: no-repeat;
+    background-position: center top;
+}
+/* @media only screen and (min-width: 58.063em) {
+	.column, .columns {
+    position: relative;
+    padding-left: .71429rem;
+    padding-right: .71429rem;
+    float: left;
+  }
+}
+@media only screen and (min-width: 40.063em){
+	.column, .columns {
+    position: relative;
+    padding-left: .71429rem;
+    padding-right: .71429rem;
+    float: left;
+   }
+}
+.column, .columns {
+    padding-left: .71429rem;
+    padding-right: .71429rem;
+    float: left;
+} */
+.upload.cta {
+    padding: 8px 40px;
+    margin-top: 30px;
+    margin-bottom: 1px;
+}
+.button.cta {
+    font-weight: 200;
+    font-size: 1.1em;
+    letter-spacing: .05em;
+    padding: 8px 40px;
+}
+.button.radius, button.radius {
+    border-radius: 3px;
+}
+.button.secondary, button.secondary {
+    background-color: #e98325;
+    border-color: #c46814;
+    color: #FFF;
+}
+table td:nth-child(2){    
+    text-align: left;
+    width: 40%;
+}
+table td:nth-child(2) img{width: 100%!important;}
+.content {
+    margin-top: 20px;
+}
+.navbar-brand {padding: 0;}
+
+nav a.navbar-brand {
+    color: #ffffff;
+    font-weight: bold;
+}
+.navbar-brand img{width: 15%;display:inline-block;}
+.input-group{text-align: center;display: block; margin-top: 20px;}
+.btn-primary{background-color: #e98325;border-color: #c46814;color: #FFF;border-radius: 3px;margin: 10px!important;}
+.file-preview{width: 100%;position: absolute;top: 10em;text-align: center;}
+.upload-button{margin-right: 10px;}
+.input-group-btn{width: 0;}
+.file-caption-name{display: inline-block;}
+.file-preview-image{margin-top:20px;}
+.btn-primary:hover{
+    background-color: #de720f;border-color: #c46814;color: #FFF;
+}
+body{background-color: rgba(0,0,0,0.04);}
