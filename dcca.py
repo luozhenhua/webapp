@@ -25,7 +25,6 @@ def list_history():
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.jinja_env.globals['static'] = (lambda filename: url_for('static', filename=filename))
 
 
 @app.route('/pic/<path:filename>')

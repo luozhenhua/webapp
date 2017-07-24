@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="{{ static('img/favicon.ico') }}" type="image/x-icon">
+    <title>DCCA AI Picture Identify Demo</title>
+
+    <style>
+        table, td {
+            border: 1px solid blue;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        
+        table td:first-child {
+            width: 40px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">Left</div>
+            <div class="col-md-6">Right</div>
+        </div>
+    </div>
+
+    <h1>DCCA AI Pic Classification Demo</h1>
+    <form enctype="multipart/form-data" action="{{ url_for('upload_image') }}" method="POST">
+        <h2>Upload a picture</h2>
+        <input type="file" name="image" />
+        <input type="submit" value="Parse" />
+    </form>
+
+    <div style="height: 300px; margin-bottom: 40px;">
+    {% if picture %}
+        <br>
+        <span style="">
+            <img src="{{ url_for('custom_static', filename=picture) }}"  style="width: 256px; height: 256px;">
+        </span>
+    {% endif %}
+
+    {% if result %}
+        <span style="">
+            <p>{{ result }}</p>
+        </span>
+    {% endif %}
+    </div>
+    <hr>
+
+{% if history_pictures %}
+    <h4>History</h4>
+    <form action="{{ url_for('parse_multiple_images') }}" method="POST">
+        <input type="submit" class="multi_parse" value="Parse" style="margin-bottom: 5px;" />
+        <table>
+        <tr>
+    {% for pic_names in history_pictures %}
+            <td>
+                <img src="{{ url_for('custom_static', filename=pic_names[1]) }}" style="width: 32px; height: 32px;" />
+            </td>
+            <!--
+            <td><input type="checkbox" name="image_names" value="{{ pic_names[1] }}" /></td>
+            <td><img src="{{ url_for('custom_static', filename=pic_names[1]) }}" style="width: 32px; height: 32px;" /></td>
+            <td>{{ pic_names[0] }}</td>
+            -->
+    {% endfor %}
+        </tr>
+        <tr>
+    {% for pic_names in history_pictures %}
+            <td>{{ pic_names[0] }}</td>
+    {% endfor %}        
+        </tr>
+        <tr>
+    {% for pic_names in history_pictures %}
+            <td><input type="checkbox" name="image_names" value="{{ pic_names[1] }}" /></td>
+    {% endfor %}
+        </tr>
+        </table>
+    </form>
+{% endif %}
+
+ 
+{% if multi_result %}
+<table style="margin-top: 5px;">
+    {% for result in multi_result %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td><img src="{{ url_for('custom_static', filename=result['name']) }}" style="width: 256px; height: 256px;"></td>
+            <td>{{ result['comments'] }}</td>
+        </tr>
+    {% endfor %}
+</table>
+{% endif %}
+</body>
+</html>
