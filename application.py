@@ -7,7 +7,7 @@ from werkzeug.utils import secure_filename, redirect
 PROJECT_BASE = os.path.dirname(__file__)
 
 UPLOAD_FOLDER = os.path.join(PROJECT_BASE, 'images')
-SAMPLES_FOLDER = os.path.join(PROJECT_BASE, 'samples')
+SAMPLES_FOLDER = os.path.join(PROJECT_BASE, 'images')
 
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 

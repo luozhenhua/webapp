@@ -12,6 +12,8 @@ RUN ls /root/dcca/webapp && \
     cd /root/dcca/webapp && pip install -r requirements.txt && \
     cd /root/dcca && ln -sf /root/dcca/webapp/images images
 
+RUN apt-get install python-gevent -y
+
 WORKDIR /root/dcca/webapp
 
-CMD ["python", "dcca.py"]
+ENTRYPOINT ["gunicorn","-c","dcca-ai.conf","application:app"]
