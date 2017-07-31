@@ -1,4 +1,4 @@
-This is the webapp for AI picture identify demo.
+This is the webapp for AI picture classification demo.
 
 
 source venv/bin/activate
