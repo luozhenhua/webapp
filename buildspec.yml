@@ -1,0 +1,39 @@
+version: 0.2
+
+env:
+  variables:
+    # Application settings
+    DOCKER_NAME: "ai-image-classify"
+    DOCKER_TAG: "latest"
+    DOCKER_FILE: "dockerfiles/aiwebapp_dockerfile"
+    # Username of dockerhub 
+    DOCKERHUB_USER: "zavierdockerhub"
+
+phases:
+  install:
+    commands:
+      # Install the docker cross build packages
+      - apt-get update -y
+      - apt-get install -y docker.io curl qemu binfmt-support qemu-user-static python
+      - nohup /usr/bin/dockerd --host=unix:///var/run/docker.sock --host=tcp://0.0.0.0:2375 --storage-driver=overlay&
+      - timeout 15 sh -c "until docker info; do echo .; sleep 1; done"
+  pre_build:
+    commands:
+      # Login dockerhub
+      - docker login -u zavierdockerhub -p zavierdocker
+  build:
+    commands:
+      # Setup the docker cross build enrironment
+      - echo Build started on `date`
+      - cat /etc/issue && uname -a && update-binfmts --display
+      - cp /usr/bin/qemu-aarch64-static .
+      - echo Building the Docker image...
+      # Cross build arm64 docker image
+      - docker build -t $DOCKER_NAME -f $DOCKER_FILE .
+      - docker tag $DOCKER_NAME $DOCKERHUB_USER/$DOCKER_NAME:$DOCKER_TAG
+  post_build:
+    commands:
+      # Push docker image to docker registry
+      - echo Build completed on `date`
+      - echo Pushing the Docker image...
+      - docker push $DOCKERHUB_USER/$DOCKER_NAME:$DOCKER_TAG
