@@ -14,6 +14,9 @@ RUN ls /root/dcca/webapp && \
 
 RUN apt-get install python-gevent openssh-client vim -y
 
+COPY index.html /root/dcca/webapp/
+COPY index.html /root/dcca/webapp/templates/
+
 WORKDIR /root/dcca/webapp
 
 ENTRYPOINT ["gunicorn","-c","dcca-ai.conf","application:app"]
