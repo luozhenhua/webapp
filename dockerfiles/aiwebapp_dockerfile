@@ -12,7 +12,7 @@ RUN ls /root/dcca/webapp && \
     cd /root/dcca/webapp && pip install -r requirements.txt && \
     cd /root/dcca && ln -sf /root/dcca/webapp/images images
 
-RUN apt-get install python-gevent -y
+RUN apt-get install python-gevent openssh-client vim -y
 
 WORKDIR /root/dcca/webapp
 
